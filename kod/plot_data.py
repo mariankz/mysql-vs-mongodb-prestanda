@@ -199,9 +199,10 @@ plt.close()
 def rita_fyrfaltare(data_matrix, titel, filnamn, col):
     fig, ax = plt.subplots(figsize=(7, 6.5))
     
+    # Solida, snygga färger: Blå, Röd, Grön, Gul
     farg_matrix = np.array([
-        [[0.12, 0.47, 0.71], [0.94, 0.33, 0.31]],
-        [[0.17, 0.63, 0.17], [0.98, 0.80, 0.18]]
+        [[0.12, 0.47, 0.71], [0.94, 0.33, 0.31]],  # Verklig data
+        [[0.17, 0.63, 0.17], [0.98, 0.80, 0.18]]   # AI-data
     ])
     
     ax.imshow(farg_matrix, aspect='equal')
@@ -209,7 +210,10 @@ def rita_fyrfaltare(data_matrix, titel, filnamn, col):
     for i in range(2):
         for j in range(2):
             val = data_matrix[i, j]
+            # Mörk text på gult, vit text på resten för perfekt läsbarhet
             text_color = '#0f172a' if (i == 1 and j == 1) else 'white'
+            
+            # Formatering: Hela tal för insättningar, två decimaler för sökningar
             if col.lower() == "insert":
                 text = f"{val:.0f}"
             else:
@@ -228,7 +232,6 @@ def rita_fyrfaltare(data_matrix, titel, filnamn, col):
 
     ax.set_xticks(np.arange(2.5) - 0.5, minor=True)
     ax.set_yticks(np.arange(2.5) - 0.5, minor=True)
-
     ax.grid(which="minor", color="white", linestyle='-', linewidth=6)
 
     ax.tick_params(which="minor", bottom=False, left=False)
@@ -241,30 +244,30 @@ def rita_fyrfaltare(data_matrix, titel, filnamn, col):
     plt.close()
 
 # ==========================================
-# DELTA BERÄKNING
+# RÄKNA TOTALT MEDELVÄRDE (Helt korrigerad!)
 # ==========================================
-def kolla_delta(df, kolumn):
-    delta = df.loc[1000000, kolumn] - df.loc[100000, kolumn]
-    antal_steg = (1000000 - 100000) / 100000
-    return (delta / antal_steg) * 1000
+def get_medel(df, kolumn):
+    return df[kolumn].mean()
+
 # ==========================================
 # FIGURER
 # ==========================================
 for titel, filnamn, col, use_index in [
-    ("Medel soktid utan index (ms)", "fig_6_5a_query_utan", "query", False),
-    ("Medel soktid med index (ms)", "fig_6_5b_query_med", "query", True),
-    ("Medel insattningstid utan index (ms)", "fig_6_5c_insert_utan", "insert", False),
-    ("Medel insattningstid med index (ms)", "fig_6_5d_insert_med", "insert", True),
+    ("Medel söktid utan index (s)", "fig_6_5a_query_utan", "query", False),
+    ("Medel söktid med index (s)", "fig_6_5b_query_med", "query", True),
+    ("Medel insättningstid utan index (s)", "fig_6_5c_insert_utan", "insert", False),
+    ("Medel insättningstid med index (s)", "fig_6_5d_insert_med", "insert", True),
 ]:
     mysql_real = mysql_single_real_index_avg if use_index else mysql_single_real_avg
     mongo_real = mongo_single_real_index_avg if use_index else mongo_single_real_avg
     mysql_ai = mysql_single_index_avg if use_index else mysql_single_avg
     mongo_ai = mongo_single_index_avg if use_index else mongo_single_avg
 
+    # Bygger matrisen med de riktiga värdena rakt av
     matris = np.array([
-        [kolla_delta(mysql_real, col), kolla_delta(mongo_real, col)],
-        [kolla_delta(mysql_ai, col), kolla_delta(mongo_ai, col)]
+        [get_medel(mysql_real, col), get_medel(mongo_real, col)],
+        [get_medel(mysql_ai, col),   get_medel(mongo_ai, col)]
     ])
     rita_fyrfaltare(matris, titel, filnamn, col)
 
-print("Klart! Alla grafer har skapats.")
+print("Klart!.")
