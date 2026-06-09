@@ -182,12 +182,6 @@ För fullständig analys hänvisas till examensrapporten.
 
 ---
 
-## Reproducerbarhet
-
-Samtliga experiment har genomförts i en lokal testmiljö och källkoden publiceras för att möjliggöra reproducerbarhet och vidare studier.
-
----
-
 ## Författare
 
 Maria Nekzada
