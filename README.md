@@ -1,14 +1,17 @@
-# Jämförelse av MySQL och MongoDB
+# Jämförelse mellan MySQL och MongoDB vid hantering av tidsseriedata
 
-Detta repository innehåller koden som användes i ett arbete där prestanda mellan MySQL och MongoDB jämförs vid hantering av tidsseriedata.
+Kod till examensarbete vid Mittuniversitetet.
 
 ## Innehåll
-- Datagenerering
-- Test av insättningar
-- Test av sökningar
+- Test av insättningsprestanda
+- Test av sökprestanda
+- Tester med och utan index
+- Sekventiell och parallell körning
+- AI-genererade och verkliga data
 
-## Syfte
-Syftet är att mäta exekveringstid vid olika datamängder och belastningar.
-
-## Notering
-Projektet är genomfört som en del av ett examensarbete.
+## Tekniker
+- Python
+- MySQL
+- MongoDB
+- Pandas
+- Matplotlib
