@@ -1,0 +1,15 @@
+{
+  "userId": 1,
+  "name": "Anna",
+  "email": "anna@mail.com",
+  "messages": [
+    {
+      "message": "Hej",
+      "timestamp": "2026-04-01"
+    },
+    {
+      "message": "Hur mår du?",
+      "timestamp": "2026-04-01"
+    }
+  ]
+}
