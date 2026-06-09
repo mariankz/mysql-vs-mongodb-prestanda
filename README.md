@@ -1,10 +1,10 @@
-# Jämförelse mellan MySQL och MongoDB vid hantering av tidsseriedata
+# En jämförelse mellan MySQL och MongoDB vid hantering av tidsseriedata
 
 ## Om projektet
 
 Detta repository innehåller källkod, testskript och resultat som använts i examensarbetet:
 
-**"Jämförelse mellan MySQL och MongoDB vid hantering av tidsseriedata – Ett experimentellt arbete med fokus på AI-genererade data"**
+**"En jämförelse mellan MySQL och MongoDB vid hantering av tidsseriedata – Prestandajämförelse mellan MySQL och MongoDB vid hantering av tidsseriedata med fokus på AI-genererade data"**
 
 Arbetet genomfördes vid Mittuniversitetet och syftar till att undersöka hur en relationsdatabas (MySQL) och en dokumentorienterad NoSQL-databas (MongoDB) presterar vid hantering av tidsseriedata.
 
@@ -23,8 +23,8 @@ Studien fokuserar på:
 
 Projektet utgår från följande forskningsfrågor:
 
-1. Hur skiljer sig transaktionstid mellan MySQL och MongoDB vid olika datamängder och typer av insättningar?
-
+1.	Hur skiljer sig transaktionstid mellan MySQL och MongoDB vid olika datamängder och typer av insättningar?
+   
 2. Hur skiljer sig tiden för transaktion mellan MySQL och MongoDB vid sökningar baserade på userId och tidsintervall, samt hur påverkas den av användning av index?
 
 3. Hur påverkas prestandan i MySQL och MongoDB av ökande datamängder?
@@ -67,7 +67,7 @@ Projektet utgår från följande forskningsfrågor:
 
 ## Testdata
 
-Två typer av data används i studien:
+Två typer av data används i arbetet:
 
 ### AI-genererad data
 
